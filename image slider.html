@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imgslider</title>
+    <style>
+         body{
+            margin: 0;
+         }
+         .slidecontainer{
+            position: relative;
+            width: 100%;
+         }
+         .slide img{
+            width: 100%;
+            height: 500px;
+         }
+         .arrow{
+            cursor: pointer;
+            position: absolute;
+            top: 45%;
+            color: black;
+            background-color: rgba(255, 255, 255, 0.716);
+            padding: 8px 17px;
+            border-radius: 50%;
+            font-size: 25px;
+            font-weight: bold;
+         }
+         .next{
+            right: 10px;
+         }
+         .prev{
+            left: 10px;
+         }
+         .caption{
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+         }
+         .slide{
+            display: none;
+         }
+    </style>
+</head>
+<body>
+    <div class="slidecontainer">
+        <div class="slide">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.avb9nDfw3kq7NOoP0grM4wHaEK&pid=Api&rs=1&c=1&qlt=95&w=211&h=118" alt="">
+            <div class="caption">caption text 1</div>
+        </div>
+         <div class="slide">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.nFtlTeqHyG2yQqh5olfSLgHaEK&pid=Api&rs=1&c=1&qlt=95&w=211&h=118" alt="">
+            <div class="caption">caption text 2</div>
+        </div>
+        <div class="slide">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.nFtlTeqHyG2yQqh5olfSLgHaEK&pid=Api&rs=1&c=1&qlt=95&w=211&h=118" alt="">
+            <div class="caption">caption text 3</div>
+        </div>
+        <div class="slide">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.avb9nDfw3kq7NOoP0grM4wHaEK&pid=Api&rs=1&c=1&qlt=95&w=211&h=118" alt="">
+            <div class="caption">caption text 4</div>
+        </div>
+        <div class="slide">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.avb9nDfw3kq7NOoP0grM4wHaEK&pid=Api&rs=1&c=1&qlt=95&w=211&h=118" alt="">
+            <div class="caption">caption text 5</div>
+        </div>
+        <div class="slide">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.avb9nDfw3kq7NOoP0grM4wHaEK&pid=Api&rs=1&c=1&qlt=95&w=211&h=118" alt="">
+            <div class="caption">caption text 6</div>
+        </div> 
+
+        <span class="arrow prev" onclick="controller(-1)">&#10094;
+        </span>
+        <span class="arrow next" onclick="controller(1)">&#10095;
+        </span>
+    </div>
+    <script>
+        let flag = 0;
+        
+        function controller(x){
+            flag=flag+x;
+            //left
+            //flag = 2+(-1) == 1
+            //right
+            //flag = 2+1 == 3
+            slideshow(flag);
+        }
+        slideshow(flag);
+        function slideshow(num){
+            let slides = document.getElementsByClassName('slide');
+            if(num == slides.length){
+                flag=0;
+                num=0;
+            }
+            if(num<0){
+                flag =slides.length-1;
+                num =slides.length-1;
+            }
+            for(let y of slides){
+                y.style.display="none";
+            }
+            slides[num].style.display ="block";
+        }
+    </script>
+</body>
+</html>
